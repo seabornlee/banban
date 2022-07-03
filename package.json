@@ -1,0 +1,13 @@
+{
+  "name": "banban",
+  "version": "1.0.0",
+  "description": "A WeChat group bot to facilitate learning",
+  "main": "index.js",
+  "author": "Seaborn Lee",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "wechaty": "^1.20.2",
+    "wechaty-puppet-padlocal": "^1.20.1"
+  }
+}
