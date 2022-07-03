@@ -5,11 +5,27 @@ export default class Parser {
   }
 
   getDuration() {
-    const durationLine = this.arrayOfLines.find((text) => { return text.indexOf("练习时长：") > -1 })
-    if (durationLine.endsWith("分钟")) {
-      const text = durationLine.split("：")[1]
+    const durationLine = this.arrayOfLines.find((text) => { return text.indexOf("练习时长") > -1 })
+
+    let splitter = "："
+    if (durationLine.indexOf(":") > -1) {
+      splitter = ":"
+    }
+
+    const text = durationLine.split(splitter)[1]
+    if (text.endsWith("分钟")) {
       const mins = text.substring(0, text.length - 2)
       return parseInt(mins)
+    }
+
+    if (text.endsWith("h") || text.endsWith("H")) {
+      const mins = text.substring(0, text.length - 1)
+      return parseInt(mins) * 60
+    }
+
+    if (text.endsWith("小时")) {
+      const mins = text.match(/\d+/)
+      return parseInt(mins) * 60
     }
   }
 
